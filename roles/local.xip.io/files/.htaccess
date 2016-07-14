@@ -1,4 +1,0 @@
-Options +FollowSymLinks
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^192.168.27.16.xip.io$ [NC]
-RewriteRule ^(.*)$ http://www.192.168.27.16.xip.io/$1 [R=301,L]

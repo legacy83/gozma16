@@ -7,9 +7,4 @@
       apt: update_cache=yes cache_valid_time=3600
 
   roles:
-    - abstract.core
-    - abstract.lamp
-    - abstract.lapp
-    - abstract.wp
-    - local.xip.io
-    - local.dev
+    - stack.core
