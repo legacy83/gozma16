@@ -1,0 +1,8 @@
+---
+dependencies:
+  - { role: abstract.core }
+  - { role: apache2 }
+  - { role: postgresql }
+  - { role: php }
+  - { role: composer }
+  - { role: nodejs }

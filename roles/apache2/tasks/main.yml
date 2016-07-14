@@ -1,0 +1,32 @@
+---
+- name: APT Get/Install Minimal
+  apt: "name={{ item }} state=present"
+  with_items:
+    - apache2
+
+- name: Service Started
+  service: name=apache2 state=started enabled=yes
+
+- name: Copy FQDN
+  copy:
+    src: fqdn.conf
+    dest: /etc/apache2/conf-available
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+  notify:
+    - apache2 | restart
+
+- name: Enable FQDN
+  file:
+    src: /etc/apache2/conf-available/fqdn.conf
+    dest: /etc/apache2/conf-enabled/fqdn.conf
+    state: link
+  notify:
+    - apache2 | restart
+
+- name: Enable Rewrite
+  apache2_module: name=rewrite state=present
+  notify:
+    - apache2 | restart

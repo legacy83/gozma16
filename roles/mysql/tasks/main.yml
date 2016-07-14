@@ -1,0 +1,23 @@
+---
+- name: Already Installed?
+  stat: path=/usr/bin/mysql
+  register: mysql_already_installed
+
+- name: Root Password
+  debconf: name=mysql-server question={{ item }} vtype=password value=root@secret
+  with_items:
+    - mysql-server/root_password
+    - mysql-server/root_password_again
+  when: mysql_already_installed == False
+
+- name: APT Get/Install Minimal
+  apt: "name={{ item }} state=present"
+  with_items:
+    - mysql-server
+    - python-mysqldb
+
+- name: Service Started
+  service: name=mysql state=started enabled=yes
+
+- name: Database Cleanup
+  mysql_db: name='test' state=absent
