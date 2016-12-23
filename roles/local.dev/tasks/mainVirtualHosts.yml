@@ -9,7 +9,6 @@
     force: yes
   with_items:
     - gozma16.local
-    - adminer.gozma16.local
     - www.gozma16.local
 
 - name: Sites Enabled
@@ -19,7 +18,6 @@
     state: link
   with_items:
     - gozma16.local
-    - adminer.gozma16.local
     - www.gozma16.local
   notify:
     - apache2 | restart
