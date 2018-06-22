@@ -1,9 +1,0 @@
----
-- name: APT Get/Install Minimal
-  apt: "name={{ item }} state=present"
-  with_items:
-    - postgresql
-    - postgresql-contrib
-
-- name: Service Started
-  service: name=postgresql state=started enabled=yes

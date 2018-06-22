@@ -1,4 +1,0 @@
----
-dependencies:
-  - { role: role.apache2 }
-  - { role: role.php }

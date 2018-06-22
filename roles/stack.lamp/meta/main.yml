@@ -1,8 +1,0 @@
----
-dependencies:
-  - { role: role.common }
-  - { role: role.apache2 }
-  - { role: role.mysql }
-  - { role: role.php }
-  - { role: role.composer }
-  - { role: role.nodejs }
