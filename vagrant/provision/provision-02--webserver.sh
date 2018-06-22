@@ -5,16 +5,15 @@
 
 webserver_install() {
   apt-get install -y \
-    apache2 php5 \
+    apache2 php7.0 \
     libapache2-mod-php7.0 \
     php7.0-cli php7.0-common php7.0-dev \
     php7.0-pgsql php7.0-sqlite3 php7.0-gd \
-    php7.0-curl php7.0-memcached \
-    php7.0-imap php7.0-mysql php7.0-mbstring \
+    php7.0-curl php7.0-imap php7.0-mysql php7.0-mbstring \
     php7.0-xml php7.0-zip php7.0-bcmath php7.0-soap \
     php7.0-intl php7.0-readline php7.0-opcache \
     php7.0-xmlrpc php7.0-xsl php7.0-json \
-    php7.0-bz2 php7.0-imagick \
+    php7.0-bz2 php-imagick php-memcached \
     php-xdebug php-pear
 }
 
@@ -36,8 +35,6 @@ webserver_setup() {
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
   </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
-
-  echo "ServerName localhost" > /etc/apache2/conf.d/name
 
   a2enmod expires
   a2enmod headers

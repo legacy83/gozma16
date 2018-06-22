@@ -1,4 +1,4 @@
 .idea
-.vagrant
-playbook.retry
-vendor
+.DS_Store
+/.vagrant
+/package.box
