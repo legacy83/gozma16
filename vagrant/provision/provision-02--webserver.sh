@@ -13,8 +13,8 @@ webserver_install() {
     php7.0-xml php7.0-zip php7.0-bcmath php7.0-soap \
     php7.0-intl php7.0-readline php7.0-opcache \
     php7.0-xmlrpc php7.0-xsl php7.0-json \
-    php7.0-bz2 php-imagick php-memcached \
-    php-xdebug php-pear
+    php7.0-bz2 php7.0-mcrypt php-imagick \
+    php-pear php-memcached php-apcu
 }
 
 webserver_setup() {
@@ -35,6 +35,10 @@ webserver_setup() {
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
   </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
+
+  sed -i "s/memory_limit = .*/memory_limit = 256M/" /etc/php/7.0/apache2/php.ini
+  sed -i "s/post_max_size = .*/post_max_size = 64M/" /etc/php/7.0/apache2/php.ini
+  sed -i "s/upload_max_filesize = .*/upload_max_filesize = 32M/" /etc/php/7.0/apache2/php.ini
 
   a2enmod expires
   a2enmod headers

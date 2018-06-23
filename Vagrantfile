@@ -13,5 +13,9 @@ Vagrant.configure("2") do |config|
     # synced folders
     ubuntu16.vm.synced_folder '.', '/vagrant', disabled: true
     ubuntu16.vm.synced_folder '~/PhpStorm__Projects', '/projects', owner: 'vagrant', group: 'vagrant'
+    # configuration
+    ubuntu16.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+    end
   end
 end
